@@ -41,14 +41,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     @Transactional
     public void update(Long id, Client client) {
-        Client clientToUpdate = clientRepository.findById(id)
-                .orElseThrow(() -> new NoDataFoundException("client not found by id: " + id));
-        clientToUpdate.setFirstName(client.getFirstName());
-        clientToUpdate.setLastName(client.getLastName());
-        clientToUpdate.setSex(client.getSex());
-        clientToUpdate.setAge(client.getAge());
-        clientToUpdate.setEmail(client.getEmail());
-        clientRepository.save(clientToUpdate);
+        clientRepository.update(id, client);
     }
 
     @Override

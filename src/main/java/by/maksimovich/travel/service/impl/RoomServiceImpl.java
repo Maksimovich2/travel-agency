@@ -41,14 +41,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @Transactional
     public void update(Long id, Room room) {
-        Room roomToUpdate = roomRepository.findById(id)
-                .orElseThrow(() -> new NoDataFoundException("Room not found by id" + id));
-        roomToUpdate.setCapacity(room.getCapacity());
-        roomToUpdate.setHotel(room.getHotel());
-        roomToUpdate.setNumber(room.getNumber());
-        roomToUpdate.setPrice(room.getPrice());
-        roomToUpdate.setStatus(room.getStatus());
-        roomRepository.save(roomToUpdate);
+        roomRepository.update(id, room);
     }
 
     @Override

@@ -41,13 +41,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public void update(Long id, Order order) {
-        Order orderToUpdate = orderRepository.findById(id)
-                .orElseThrow(() -> new NoDataFoundException("Order not found by id: " + id));
-        orderToUpdate.setOrderTime(order.getOrderTime());
-        orderToUpdate.setTour(order.getTour());
-        orderToUpdate.setTotalPrice(order.getTotalPrice());
-        orderToUpdate.setClient(order.getClient());
-        orderRepository.save(orderToUpdate);
+        orderRepository.update(id, order);
     }
 
     @Override

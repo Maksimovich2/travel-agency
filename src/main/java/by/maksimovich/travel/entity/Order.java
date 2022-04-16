@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * @author Maksim Maksimovich
@@ -27,12 +27,12 @@ public class Order {
     private Long id;
 
     @Column(name = "order_time")
-    private LocalDateTime orderTime;
+    private LocalDate orderTime;
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @JoinColumn(name = "tour_id", referencedColumnName = "id")
+    @JoinColumn(name = "toor_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private Tour tour;
 
