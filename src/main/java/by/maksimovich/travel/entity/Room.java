@@ -1,5 +1,9 @@
 package by.maksimovich.travel.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnTransformer;
 
 import javax.persistence.*;
@@ -9,7 +13,10 @@ import java.math.BigDecimal;
  * @author Maksim Maksimovich
  * @created 15/04/2022 - 22:44
  */
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "rooms")
 public class Room {

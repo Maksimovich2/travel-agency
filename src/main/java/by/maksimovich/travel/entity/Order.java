@@ -1,5 +1,10 @@
 package by.maksimovich.travel.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -8,6 +13,10 @@ import java.time.LocalDate;
  * @author Maksim Maksimovich
  * @created 15/04/2022 - 22:43
  */
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order {
