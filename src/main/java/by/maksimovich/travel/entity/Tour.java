@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Maksim Maksimovich
@@ -26,10 +26,10 @@ public class Tour {
     private Long id;
 
     @Column(name = "arrival_date")
-    private LocalDate arrivalDate;
+    private LocalDateTime arrivalDate;
 
     @Column(name = "departure_date")
-    private LocalDate departureDate;
+    private LocalDateTime departureDate;
 
     @Column(name = "count_transfers")
     private int countTransfers;

@@ -41,7 +41,12 @@ public class HotelServiceImpl implements HotelService {
     @Override
     @Transactional
     public void update(Long id, Hotel hotel) {
-        hotelRepository.update(id, hotel);
+        Hotel hotelToUpdate = hotelRepository.findById(id)
+                .orElseThrow(() -> new NoDataFoundException("hotel not found by id: " + id));
+        hotelToUpdate.setCountStars(hotel.getCountStars());
+        hotelToUpdate.setLocation(hotel.getLocation());
+        hotelToUpdate.setName(hotel.getName());
+        hotelRepository.save(hotelToUpdate);
     }
 
     @Override

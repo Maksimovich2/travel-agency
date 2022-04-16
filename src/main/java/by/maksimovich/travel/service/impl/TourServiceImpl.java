@@ -41,7 +41,13 @@ public class TourServiceImpl implements TourService {
     @Override
     @Transactional
     public void update(Long id, Tour tour) {
-        tourRepository.update(id, tour);
+        Tour tourToSave = tourRepository.findById(id)
+                .orElseThrow(() -> new NoDataFoundException("Tour not found by id: " + id));
+        tourToSave.setArrivalDate(tour.getArrivalDate());
+        tourToSave.setDepartureDate(tour.getDepartureDate());
+        tourToSave.setCountTransfers(tour.getCountTransfers());
+        tourToSave.setHotel(tour.getHotel());
+        tourRepository.save(tourToSave);
     }
 
     @Override
