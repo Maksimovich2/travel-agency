@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Maksim Maksimovich
@@ -40,13 +41,24 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     @Transactional
-    public void update(Long id, Hotel hotel) {
-        Hotel hotelToUpdate = hotelRepository.findById(id)
-                .orElseThrow(() -> new NoDataFoundException("hotel not found by id: " + id));
-        hotelToUpdate.setCountStars(hotel.getCountStars());
-        hotelToUpdate.setLocation(hotel.getLocation());
-        hotelToUpdate.setName(hotel.getName());
-        hotelRepository.save(hotelToUpdate);
+    public Hotel update(Hotel hotel) {
+        if (hotel.getId() == null) {
+            hotel = hotelRepository.save(hotel);
+            return hotel;
+        } else {
+            Optional<Hotel> user = hotelRepository.findById(hotel.getId());
+            if (user.isPresent()) {
+                Hotel newEntity = user.get();
+                newEntity.setName(hotel.getName());
+                newEntity.setLocation(hotel.getLocation());
+                newEntity.setCountStars(hotel.getCountStars());
+                newEntity = hotelRepository.save(newEntity);
+                return newEntity;
+            } else {
+                hotel = hotelRepository.save(hotel);
+                return hotel;
+            }
+        }
     }
 
     @Override

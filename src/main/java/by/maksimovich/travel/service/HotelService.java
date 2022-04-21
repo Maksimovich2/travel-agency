@@ -1,6 +1,5 @@
 package by.maksimovich.travel.service;
 
-import by.maksimovich.travel.entity.Client;
 import by.maksimovich.travel.entity.Hotel;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public interface HotelService {
 
     List<Hotel> findAll();
 
-    void update(Long id, Hotel hotel);
+    Hotel update(Hotel hotel);
 
     void delete(Long id);
 }
