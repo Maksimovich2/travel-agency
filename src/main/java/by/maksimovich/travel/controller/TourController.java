@@ -2,6 +2,7 @@ package by.maksimovich.travel.controller;
 
 import by.maksimovich.travel.controller.convertor.TourConvertor;
 import by.maksimovich.travel.controller.dto.tour.TourDto;
+import by.maksimovich.travel.controller.dto.tour.TourDtoResponse;
 import by.maksimovich.travel.controller.dto.tour.TourDtoSaveRequest;
 import by.maksimovich.travel.entity.Tour;
 import by.maksimovich.travel.service.TourService;
@@ -14,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Maksim Maksimovich
@@ -43,7 +45,11 @@ public class TourController {
     @GetMapping("/tours")
     public String findAll(Model model) {
         List<Tour> tours = tourService.findAll();
-        model.addAttribute("tours", tours);
+        List<TourDtoResponse> tourDtoResponses = tours
+                .stream()
+                .map(tourConvertor::convertToDtoResponse)
+                .collect(Collectors.toList());
+        model.addAttribute("tours", tourDtoResponses);
         return "/tour";
     }
 

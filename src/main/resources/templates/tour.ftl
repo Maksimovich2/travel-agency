@@ -17,8 +17,9 @@
     <table class="table">
         <thead >
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Hotel</th>
+            <th scope="col">Hotel name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Count stars</th>
             <th scope="col">Departure date</th>
             <th scope="col">Arrival date</th>
             <th scope="col">Count transfers</th>
@@ -28,8 +29,9 @@
         <tbody>
         <#list tours as tour>
             <tr>
-                <th scope="row">${tour.id}</th>
-                <td>${tour.hotel}</td>
+                <th scope="row">${tour.hotelName}</th>
+                <td>${tour.location}</td>
+                <td>${tour.countStars}</td>
                 <td>${tour.departureDate}</td>
                 <td>${tour.arrivalDate}</td>
                 <td>${tour.countTransfers}</td>
