@@ -25,12 +25,12 @@ public class HotelController {
 
     @Value("${msg.title}")
     private String title;
-
-    @GetMapping(value = {"/", "/index"})
-    public String index(Model model) {
-        model.addAttribute("title", title);
-        return "/index";
-    }
+//
+//    @GetMapping(value = {"/", "/index"})
+//    public String index(Model model) {
+//        model.addAttribute("title", title);
+//        return "/index";
+//    }
 
     @PostMapping("/hotels/save")
     public String saveHotelView(@ModelAttribute("hotel") Hotel hotel) {

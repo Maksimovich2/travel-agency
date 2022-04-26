@@ -15,5 +15,5 @@ public class TourDto {
     private LocalDateTime arrivalDate;
     private LocalDateTime departureDate;
     private int countTransfers;
-    private Hotel hotel;
+    private Long hotelId;
 }

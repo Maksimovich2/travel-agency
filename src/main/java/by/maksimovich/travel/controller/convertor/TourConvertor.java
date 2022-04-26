@@ -3,10 +3,13 @@ package by.maksimovich.travel.controller.convertor;
 import by.maksimovich.travel.controller.dto.tour.TourDto;
 import by.maksimovich.travel.controller.dto.tour.TourDtoResponse;
 import by.maksimovich.travel.controller.dto.tour.TourDtoSaveRequest;
+import by.maksimovich.travel.entity.Hotel;
 import by.maksimovich.travel.entity.Tour;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 /**
  * @author Maksim Maksimovich
@@ -20,6 +23,21 @@ public class TourConvertor {
         modelMapper = new ModelMapper();
         modelMapper.typeMap(Tour.class, TourDtoResponse.class)
                 .setPostConverter(convertToDtoResponse());
+        modelMapper.typeMap(TourDtoSaveRequest.class, Tour.class)
+                .setPostConverter(tourDtoSaveRequestPC());
+    }
+
+    private Converter<TourDtoSaveRequest, Tour> tourDtoSaveRequestPC() {
+        return mappingContext -> {
+            TourDtoSaveRequest source = mappingContext.getSource();
+            Tour destination = mappingContext.getDestination();
+            Hotel hotel = new Hotel();
+            hotel.setId(source.getHotelId());
+            destination.setHotel(hotel);
+            destination.setArrivalDate(LocalDate.parse(source.getArrivalDate()).atStartOfDay());
+            destination.setDepartureDate(LocalDate.parse(source.getDepartureDate()).atStartOfDay());
+            return destination;
+        };
     }
 
     private Converter<Tour, TourDtoResponse> convertToDtoResponse() {

@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
  */
 @Data
 public class TourDtoSaveRequest {
-    private LocalDateTime arrivalDate;
-    private LocalDateTime departureDate;
+    private String arrivalDate;
+    private String departureDate;
     private int countTransfers;
-    private Hotel hotel;
+    private Long hotelId;
 }
