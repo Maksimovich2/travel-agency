@@ -36,6 +36,9 @@ public class TourConvertor {
             destination.setHotel(hotel);
             destination.setArrivalDate(LocalDate.parse(source.getArrivalDate()).atStartOfDay());
             destination.setDepartureDate(LocalDate.parse(source.getDepartureDate()).atStartOfDay());
+            destination.setPrice(source.getPrice());
+            destination.setTourOperatorEmail(source.getTourOperatorEmail());
+            destination.setNotes(source.getNotes());
             return destination;
         };
     }
@@ -50,6 +53,9 @@ public class TourConvertor {
             destination.setArrivalDate(source.getArrivalDate());
             destination.setDepartureDate(source.getDepartureDate());
             destination.setCountTransfers(source.getCountTransfers());
+            destination.setNotes(source.getNotes());
+            destination.setTourOperatorEmail(source.getTourOperatorEmail());
+            destination.setPrice(source.getPrice());
             return destination;
         };
     }

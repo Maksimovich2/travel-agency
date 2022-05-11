@@ -40,6 +40,10 @@ known = Session.SPRING_SECURITY_CONTEXT??
                             <a href="/" class="dropdown-toggle">${name}</a>
                         </li>
                         <li class="dropdown">
+                            <a href="/order/orders" class="dropdown-toggle">
+                                my orders</a>
+                        </li>
+                        <li class="dropdown">
                             <a href="/logout" class="dropdown-toggle"><span class="glyphicon glyphicon-log-out"></span>
                                 Logout</a>
                         </li>
@@ -63,6 +67,9 @@ known = Session.SPRING_SECURITY_CONTEXT??
                     <th scope="col">Departure date</th>
                     <th scope="col">Arrival date</th>
                     <th scope="col">Count transfers</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Price</th>
+<#--                    <th scope="col">Notes</th>-->
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -75,15 +82,18 @@ known = Session.SPRING_SECURITY_CONTEXT??
                         <td>${tour.departureDate}</td>
                         <td>${tour.arrivalDate}</td>
                         <td>${tour.countTransfers}</td>
+                        <td>${tour.tourOperatorEmail}</td>
+                        <td>${tour.price}</td>
+<#--                        <td>${tour.notes}</td>-->
 
                         <#if isAdmin == true>
                         <#--                            нужно сделать деактивацию тура-->
-                            <td><a href="/delete/${tour.id}" class="btn btn-danger" role="button">
+                            <td><a href="/tours/tour/delete/${tour.id}" class="btn btn-danger" role="button">
                                     Deactivate</a></td>
                         <#else >
                         <#--                            нужно сделать покупку тура-->
-                            <td><a href="/update/${tour.id}" class="btn btn-success" role="button">
-                                    I want it!</a></td>
+                            <td><a href="order/make-order/${tour.id}" class="btn btn-success" role="button">
+                                    BUY</a></td>
                         </#if>
 
                     </tr>

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -33,6 +34,15 @@ public class Tour {
 
     @Column(name = "count_transfers")
     private int countTransfers;
+
+    @Column(name = "price")
+    private BigDecimal price;
+
+    @Column(name = "tour_operator_email")
+    private String tourOperatorEmail;
+
+    @Column(name = "notes")
+    private String notes;
 
     @JoinColumn(name = "hotel_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)

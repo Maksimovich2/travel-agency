@@ -6,7 +6,6 @@ import by.maksimovich.travel.entity.Tour;
 import by.maksimovich.travel.service.TourService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,5 +39,4 @@ public class MainController {
         model.addAttribute("isAdmin", request.isUserInRole("ROLE_ADMIN"));
         return "/tour";
     }
-
 }

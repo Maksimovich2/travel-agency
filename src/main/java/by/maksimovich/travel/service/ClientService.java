@@ -18,4 +18,6 @@ public interface ClientService {
     void update(Long id, Client client);
 
     void delete(Long id);
+
+    Client findByClientLastName(String lastName);
 }

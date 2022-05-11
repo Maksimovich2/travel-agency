@@ -18,7 +18,7 @@ public class ClientDtoSaveRequest {
     private String email;
     private int age;
 
-    @ColumnTransformer(read = "UPPER(operation_type)", write = "LOWER(?)")
+    @ColumnTransformer(read = "UPPER(sex)", write = "LOWER(?)")
     @Enumerated(EnumType.STRING)
     private Sex sex;
 }

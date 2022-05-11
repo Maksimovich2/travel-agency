@@ -32,7 +32,7 @@ public class Room {
     private int number;
 
     @Column(name = "status")
-    @ColumnTransformer(read = "UPPER(operation_type)", write = "LOWER(?)")
+    @ColumnTransformer(read = "UPPER(status)", write = "LOWER(?)")
     @Enumerated(EnumType.STRING)
     private Status status;
 

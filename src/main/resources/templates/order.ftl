@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="ENG">
 <head>
     <title>Orders</title>
     <meta charset="utf-8">
@@ -13,34 +14,45 @@
 <body>
 <div class="container">
     <h2>All orders</h2>
-    <a href="/save" class="btn btn-primary" role="button">Make new order</a>
+    <#if isAdmin == true>
+        <a href="order/save" class="btn btn-primary" role="button">Make new order</a>
+    </#if>
     <table class="table">
         <thead >
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Client</th>
+            <th scope="col">Last name</th>
+            <th scope="col">First name</th>
             <th scope="col">Order time</th>
             <th scope="col">Total price</th>
-            <th scope="col">Tour</th>
+            <th scope="col">Hotel name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Count transfers</th>
+            <th scope="col">Arrival date</th>
+            <th scope="col">Departure date</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <#list orders as order>
             <tr>
-                <th scope="row">${order.id}</th>
-                <td>${order.client}</td>
+                <td>${order.clientLastName}</td>
+                <td>${order.clientFirstName}</td>
                 <td>${order.orderTime}</td>
                 <td>${order.totalPrice}</td>
-                <td>${order.tour}</td>
-                <td><a href="/update/${order.id}" class="btn btn-warning" role="button">
-                        Update</a></td>
-                <td><a href="/delete/${order.id}" class="btn btn-danger" role="button">
-                        Delete</a></td>
+                <td>${order.hotelName}</td>
+                <td>${order.location}</td>
+                <td>${order.countTransfers}</td>
+                <td>${order.arrivalDate}</td>
+                <td>${order.departureDate}</td>
+                <#if isAdmin == true>
+                    <td><a href="orders/delete/${order.id}" class="btn btn-danger" role="button">
+                            Cancel order</a></td>
+                </#if>
             </tr>
         </#list>
         </tbody>
     </table>
+    <a href="/">Back to Tour List</a>
 </div>
 </body>
 </html>

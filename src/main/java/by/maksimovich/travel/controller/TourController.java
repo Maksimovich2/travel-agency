@@ -67,9 +67,10 @@ public class TourController {
         return "/tour";
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> delete(@PathVariable(name = "id") Long id) {
+    @Secured("ROLE_ADMIN")
+    @GetMapping(value = {"/tour/delete/{id}"})
+    public String delete(@PathVariable Long id) {
         tourService.delete(id);
-        return ResponseEntity.ok().build();
+        return "redirect:/";
     }
 }

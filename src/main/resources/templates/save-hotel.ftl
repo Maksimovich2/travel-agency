@@ -55,6 +55,7 @@
                 </tbody>
             </table>
             <button class="btn btn-primary" type="submit">Save</button>
+            <a href="/hotels">Back to Hotel List</a>
         </form>
     </div>
 </div>

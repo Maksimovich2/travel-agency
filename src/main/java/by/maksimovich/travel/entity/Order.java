@@ -39,4 +39,11 @@ public class Order {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private Client client;
+
+    public Order(LocalDateTime orderTime, BigDecimal totalPrice, Tour tour, Client client) {
+        this.orderTime = orderTime;
+        this.totalPrice = totalPrice;
+        this.tour = tour;
+        this.client = client;
+    }
 }

@@ -22,8 +22,8 @@
         <form action="/tours" method="post" name="create-tour" id="create-tour">
 
             <div class="form-group">
-                <label for="emailForm">Email оператора</label>
-                <input type="email" class="form-control" id="emailForm" name="emailForm"
+                <label for="tourOperatorEmail">Email оператора</label>
+                <input type="email" class="form-control" id="tourOperatorEmail" name="tourOperatorEmail"
                        placeholder="name@example.com">
             </div>
             <div class="form-group">
@@ -42,6 +42,11 @@
             </div>
 
             <div class="form-group">
+                <label for="price">Цена</label>
+                <input type="text" class="form-control" id="price" name="price">
+            </div>
+
+            <div class="form-group">
                 <label for="hotelId">Выберите отель</label>
                 <select class="form-control" id="hotelId" name="hotelId">
                     <#list hotels as hotel>
@@ -51,10 +56,11 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlTextarea10">Дополнительная информация</label>
-                <textarea class="form-control" id="exampleFormControlTextarea10" rows="3"></textarea>
+                <label for="notes">Дополнительная информация</label>
+                <textarea class="form-control" id="notes" rows="3"></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Save</button>
+            <a href="/">Back to Tour List</a>
         </form>
     </div>
 </div>

@@ -1,8 +1,8 @@
 package by.maksimovich.travel.controller.dto.tour;
 
-import by.maksimovich.travel.entity.Hotel;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -15,5 +15,8 @@ public class TourDto {
     private LocalDateTime arrivalDate;
     private LocalDateTime departureDate;
     private int countTransfers;
+    private String notes;
+    private String tourOperatorEmail;
+    private BigDecimal price;
     private Long hotelId;
 }

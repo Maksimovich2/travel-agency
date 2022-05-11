@@ -13,7 +13,9 @@
 <body>
 <div class="container">
     <h2>All hotels</h2>
-    <a href="/hotels/save" class="btn btn-primary" role="button">Add new hotel</a>
+    <#if isAdmin == true>
+        <a href="/hotels/save" class="btn btn-primary" role="button">Add new hotel</a>
+    </#if>
     <table class="table">
         <thead >
         <tr>
@@ -32,10 +34,12 @@
                 <td>${hotel.name}</td>
                 <td>${hotel.location}</td>
                 <td>${hotel.countStars}</td>
-                <td><a href="${'/hotels/update/' + hotel.id}" class="btn btn-warning" role="button">
-                        Update</a></td>
-                <td><a href="${'/hotels/delete/' + hotel.id}" class="btn btn-danger" role="button">
-                        Delete</a></td>
+                <#if isAdmin == true>
+                    <td><a href="${'/hotels/update/' + hotel.id}" class="btn btn-warning" role="button">
+                            Update</a></td>
+                    <td><a href="${'/hotels/delete/' + hotel.id}" class="btn btn-danger" role="button">
+                            Delete</a></td>
+                </#if>
             </tr>
         </#list>
         </tbody>

@@ -1,6 +1,6 @@
 package by.maksimovich.travel.service;
 
-import by.maksimovich.travel.entity.Hotel;
+import by.maksimovich.travel.entity.Client;
 import by.maksimovich.travel.entity.Order;
 
 import java.util.List;
@@ -19,4 +19,6 @@ public interface OrderService {
     void update(Long id, Order order);
 
     void delete(Long id);
+
+    void makeOrder(Long tourId, Client client);
 }

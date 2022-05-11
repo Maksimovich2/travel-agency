@@ -56,4 +56,10 @@ public class ClientServiceImpl implements ClientService {
     public void delete(Long id) {
         clientRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Client findByClientLastName(String lastName) {
+        return clientRepository.findByLastName(lastName).orElseThrow(() -> new NoDataFoundException("client not found"));
+    }
 }

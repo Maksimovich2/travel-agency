@@ -38,7 +38,7 @@ public class Client {
     private int age;
 
     @Column(name = "sex")
-    @ColumnTransformer(read = "UPPER(operation_type)", write = "LOWER(?)")
+    @ColumnTransformer(read = "UPPER(sex)", write = "LOWER(?)")
     @Enumerated(EnumType.STRING)
     private Sex sex;
 }

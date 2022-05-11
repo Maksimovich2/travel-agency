@@ -18,7 +18,7 @@ public class RoomDtoSaveRequest {
     private int capacity;
     private int number;
 
-    @ColumnTransformer(read = "UPPER(operation_type)", write = "LOWER(?)")
+    @ColumnTransformer(read = "UPPER(status)", write = "LOWER(?)")
     @Enumerated(EnumType.STRING)
     private Status status;
 

@@ -1,14 +1,22 @@
 package by.maksimovich.travel.service.impl;
 
+import by.maksimovich.travel.entity.Client;
 import by.maksimovich.travel.entity.Order;
+import by.maksimovich.travel.entity.Tour;
 import by.maksimovich.travel.exception.NoDataFoundException;
 import by.maksimovich.travel.repository.OrderRepository;
+import by.maksimovich.travel.service.ClientService;
 import by.maksimovich.travel.service.OrderService;
+import by.maksimovich.travel.service.TourService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static java.util.concurrent.TimeUnit.DAYS;
 
 /**
  * @author Maksim Maksimovich
@@ -18,6 +26,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
+    private final ClientService clientService;
+    private final TourService tourService;
 
     @Override
     @Transactional
@@ -54,5 +64,26 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public void delete(Long id) {
         orderRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void makeOrder(Long tourId, Client client) {
+        Tour tour = tourService.findById(tourId);
+        clientService.save(client);
+        if (client != null && tour != null){
+            BigDecimal totalPriceForOrder = calculateOrderPrice(
+                    tour.getArrivalDate(),
+                    tour.getDepartureDate(),
+                    tour.getPrice());
+
+            Order order = new Order(LocalDateTime.now(), totalPriceForOrder, tour, client);
+            orderRepository.save(order);
+        }
+    }
+
+    private BigDecimal calculateOrderPrice(LocalDateTime arrival, LocalDateTime departure, BigDecimal price){
+        long dif = DAYS.toChronoUnit().between(departure, arrival);
+        return price.multiply(BigDecimal.valueOf(dif));
     }
 }

@@ -2,6 +2,7 @@ package by.maksimovich.travel.controller.dto.tour;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -17,4 +18,7 @@ public class TourDtoResponse {
     private String hotelName;
     private String location;
     private int countStars;
+    private String notes;
+    private String tourOperatorEmail;
+    private BigDecimal price;
 }
